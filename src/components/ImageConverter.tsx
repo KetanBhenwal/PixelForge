@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 // Remove unused Props interface to fix lint error
 
-const ImageConverter: React.FC<Props> = () => {
+const ImageConverter: React.FC = () => {
   const [file, setFile] = useState<File | null>(null);
   const [outputUrl, setOutputUrl] = useState<string>("");
   const [outputType, setOutputType] = useState<string>("image/jpeg");
