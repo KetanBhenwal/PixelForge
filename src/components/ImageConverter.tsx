@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 
+// eslint-disable-next-line @typescript-eslint/no-empty-interface
 interface Props {}
 
 const ImageConverter: React.FC<Props> = () => {
@@ -64,6 +65,7 @@ const ImageConverter: React.FC<Props> = () => {
       </div>
       {outputUrl && (
         <div className="flex flex-col items-center gap-2 mt-4">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src={outputUrl} alt="Converted" className="max-w-full max-h-64 border rounded shadow" />
           <a href={outputUrl} download={`converted.${outputType.split("/")[1]}`} className="text-blue-700 dark:text-blue-300 underline font-medium">
             Download

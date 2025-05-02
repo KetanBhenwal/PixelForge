@@ -1,7 +1,7 @@
 
 
 "use client";
-import Image from "next/image";
+// import Image from "next/image";
 import ImageConverter from "@/components/ImageConverter";
 import AdSense from "@/components/AdSense";
 

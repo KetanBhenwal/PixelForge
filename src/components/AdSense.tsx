@@ -10,7 +10,7 @@ interface AdSenseProps {
 const AdSense: React.FC<AdSenseProps> = ({ client, slot, style }) => {
   useEffect(() => {
     if (typeof window === "undefined") return;
-    if (!(window as any).adsbygoogle) {
+    if (!(window as unknown as { adsbygoogle?: unknown }).adsbygoogle) {
       const script = document.createElement("script");
       script.async = true;
       script.src = "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js";
@@ -18,8 +18,10 @@ const AdSense: React.FC<AdSenseProps> = ({ client, slot, style }) => {
       document.head.appendChild(script);
     }
     try {
-      ((window as any).adsbygoogle = (window as any).adsbygoogle || []).push({});
-    } catch (e) {}
+      ((window as unknown as { adsbygoogle: unknown[] }).adsbygoogle = (window as unknown as { adsbygoogle: unknown[] }).adsbygoogle || []).push({});
+    } catch {
+      // ignore
+    }
   }, []);
 
   return (
