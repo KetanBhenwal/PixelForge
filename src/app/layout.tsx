@@ -53,15 +53,27 @@ export default function RootLayout({
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3851492837698079"
           crossOrigin="anonymous"
         ></script>
+        <meta name="description" content="Convert images, documents, and compress files online. Fast, free, and easy to use!" />
+        <meta name="keywords" content="image converter, document converter, file compression, online tools" />
+        <link rel="canonical" href="https://yourdomain.com/" />
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        {/* Navigation Bar */}
+        <nav className="bg-gray-800 text-white p-4">
+          <ul className="flex justify-center gap-8">
+            <li><a href="/" className="hover:underline">Home</a></li>
+            <li><a href="/convert-documents" className="hover:underline">Convert Documents</a></li>
+            <li><a href="/compress-files" className="hover:underline">Compress Files</a></li>
+          </ul>
+        </nav>
+
         {/* Google AdSense ad slot example (replace data-ad-client and data-ad-slot with your own) */}
         <ins
           className="adsbygoogle"
           style={{ display: "block", textAlign: "center" }}
-          data-ad-client="ca-pub-xxxxxxxxxxxxxxxx"
+          data-ad-client="ca-pub-3851492837698079"
           data-ad-slot="1234567890"
           data-ad-format="auto"
           data-full-width-responsive="true"

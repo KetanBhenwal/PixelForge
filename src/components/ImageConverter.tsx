@@ -7,6 +7,8 @@ const ImageConverter: React.FC = () => {
   const [outputUrl, setOutputUrl] = useState<string>("");
   const [outputType, setOutputType] = useState<string>("image/jpeg");
   const [loading, setLoading] = useState(false);
+  const [resizeOption, setResizeOption] = useState<string>("percentage");
+  const [resizeValue, setResizeValue] = useState<number>(100);
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files[0]) {
@@ -19,6 +21,14 @@ const ImageConverter: React.FC = () => {
     setOutputType(e.target.value);
   };
 
+  const handleResizeOptionChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    setResizeOption(e.target.value);
+  };
+
+  const handleResizeValueChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setResizeValue(Number(e.target.value));
+  };
+
   const handleConvert = async () => {
     if (!file) return;
     setLoading(true);
@@ -27,10 +37,21 @@ const ImageConverter: React.FC = () => {
       const img = new window.Image();
       img.onload = () => {
         const canvas = document.createElement("canvas");
-        canvas.width = img.width;
-        canvas.height = img.height;
         const ctx = canvas.getContext("2d");
-        ctx?.drawImage(img, 0, 0);
+
+        let scaleFactor = 1;
+        if (resizeOption === "percentage") {
+          scaleFactor = resizeValue / 100;
+        } else if (resizeOption === "size") {
+          const targetSize = resizeValue * 1024; // Convert KB to bytes
+          const originalSize = file.size;
+          scaleFactor = Math.sqrt(targetSize / originalSize);
+        }
+
+        canvas.width = img.width * scaleFactor;
+        canvas.height = img.height * scaleFactor;
+        ctx?.drawImage(img, 0, 0, canvas.width, canvas.height);
+
         const url = canvas.toDataURL(outputType);
         setOutputUrl(url);
         setLoading(false);
@@ -54,14 +75,27 @@ const ImageConverter: React.FC = () => {
           <option value="image/webp">WEBP</option>
           <option value="image/bmp">BMP</option>
         </select>
-        <button
-          onClick={handleConvert}
-          disabled={!file || loading}
-          className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded transition disabled:opacity-50"
-        >
-          {loading ? "Converting..." : "Convert"}
-        </button>
       </div>
+      <div className="flex w-full gap-2">
+        <select value={resizeOption} onChange={handleResizeOptionChange} className="border rounded p-2 flex-1 bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-gray-100">
+          <option value="percentage">Resize by Percentage</option>
+          <option value="size">Resize by Size (KB)</option>
+        </select>
+        <input
+          type="number"
+          value={resizeValue}
+          onChange={handleResizeValueChange}
+          className="border rounded p-2 flex-1 bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-gray-100"
+          placeholder="Enter value"
+        />
+      </div>
+      <button
+        onClick={handleConvert}
+        disabled={!file || loading}
+        className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded transition disabled:opacity-50"
+      >
+        {loading ? "Converting..." : "Convert"}
+      </button>
       {outputUrl && (
         <div className="flex flex-col items-center gap-2 mt-4">
           {/* eslint-disable-next-line @next/next/no-img-element */}
