@@ -3,6 +3,7 @@
 "use client";
 import Image from "next/image";
 import ImageConverter from "@/components/ImageConverter";
+import AdSense from "@/components/AdSense";
 
 export default function Home() {
   return (
@@ -12,6 +13,10 @@ export default function Home() {
         Convert your images between popular formats directly in your browser. Fast, private, and free. No upload required!
       </p>
       <ImageConverter />
+      {/* Place your real AdSense client and slot values below */}
+      <div className="my-8 w-full flex justify-center">
+        <AdSense client="ca-pub-xxxxxxxxxxxxxxxx" slot="1234567890" />
+      </div>
       <footer className="mt-12 text-xs text-gray-500 text-center">
         &copy; {new Date().getFullYear()} Image Converter. Built with Next.js.
       </footer>
