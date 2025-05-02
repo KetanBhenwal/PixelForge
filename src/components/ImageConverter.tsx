@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
-interface Props {}
+// Remove unused Props interface to fix lint error
 
 const ImageConverter: React.FC<Props> = () => {
   const [file, setFile] = useState<File | null>(null);
