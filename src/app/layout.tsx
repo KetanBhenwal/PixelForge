@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import Link from "next/link";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -63,9 +64,9 @@ export default function RootLayout({
         {/* Navigation Bar */}
         <nav className="bg-gray-800 text-white p-4">
           <ul className="flex justify-center gap-8">
-            <li><a href="/" className="hover:underline">Home</a></li>
-            <li><a href="/convert-documents" className="hover:underline">Convert Documents</a></li>
-            <li><a href="/compress-files" className="hover:underline">Compress Files</a></li>
+            <li><Link href="/" className="hover:underline">Home</Link></li>
+            <li><Link href="/convert-documents" className="hover:underline">Convert Documents</Link></li>
+            <li><Link href="/compress-files" className="hover:underline">Compress Files</Link></li>
           </ul>
         </nav>
 
