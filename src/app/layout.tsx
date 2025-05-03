@@ -71,11 +71,12 @@ export default function RootLayout({
         </nav>
 
         {/* Google AdSense ad slot example (replace data-ad-client and data-ad-slot with your own) */}
+        <script>{`(adsbygoogle = window.adsbygoogle || []).push({});`}</script>
         <ins
           className="adsbygoogle"
-          style={{ display: "block", textAlign: "center" }}
+          style={{ display: "block" }}
           data-ad-client="ca-pub-3851492837698079"
-          data-ad-slot="1234567890"
+          data-ad-slot="2584456808"
           data-ad-format="auto"
           data-full-width-responsive="true"
         ></ins>
