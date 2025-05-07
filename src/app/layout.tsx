@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+
 import Link from "next/link";
+import Image from "next/image";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -72,25 +74,25 @@ export default function RootLayout({
             <ul className="flex justify-center gap-8">
               <li>
                 <Link href="/" className="hover:underline flex items-center gap-2">
-                  <img src="/home.svg" alt="Home" className="w-5 h-5" />
+                  <Image src="/home.svg" alt="Home" width={20} height={20} />
                   Home
                 </Link>
               </li>
               <li>
                 <Link href="/convert-documents" className="hover:underline flex items-center gap-2">
-                  <img src="/document.svg" alt="Convert Documents" className="w-5 h-5" />
+                  <Image src="/document.svg" alt="Convert Documents" width={20} height={20} />
                   Convert Documents
                 </Link>
               </li>
               <li>
                 <Link href="/compress-files" className="hover:underline flex items-center gap-2">
-                  <img src="/compress.svg" alt="Compress Files" className="w-5 h-5" />
+                  <Image src="/compress.svg" alt="Compress Files" width={20} height={20} />
                   Compress Files
                 </Link>
               </li>
               <li>
                 <Link href="/file-management" className="hover:underline flex items-center gap-2">
-                  <img src="/manage.svg" alt="File Management" className="w-5 h-5" />
+                  <Image src="/manage.svg" alt="File Management" width={20} height={20} />
                   File Management
                 </Link>
               </li>
