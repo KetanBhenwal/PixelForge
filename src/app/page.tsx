@@ -5,24 +5,19 @@ import AdSense from "../components/AdSense";
 
 export default function Home() {
   return (
-    <>
-      <head>
-        <meta name="description" content="Convert images between PNG, JPEG, WEBP, and BMP formats instantly in your browser. Fast, private, and free!" />
-      </head>
-      <div className="min-h-screen flex flex-col items-center justify-center p-4 bg-gray-50 dark:bg-gray-900">
-        <h1 className="text-3xl font-bold mb-6 text-center">Image Converter (PNG, JPEG, WEBP, BMP)</h1>
-        <p className="mb-8 text-center max-w-xl text-gray-700 dark:text-gray-300">
-          Convert your images between popular formats directly in your browser. Fast, private, and free. No upload required!
-        </p>
-        <ImageConverter />
-        {/* Place your real AdSense client and slot values below */}
-        <div className="my-8 w-full flex justify-center">
-          <AdSense client="ca-pub-xxxxxxxxxxxxxxxx" slot="1234567890" />
-        </div>
-        <footer className="mt-12 text-xs text-gray-500 text-center">
-          &copy; {new Date().getFullYear()} Image Converter. Built with Next.js.
-        </footer>
+    <div className="min-h-screen flex flex-col items-center justify-center p-4 bg-gray-50 dark:bg-gray-900">
+      <h1 className="text-3xl font-bold mb-6 text-center">Image Converter (PNG, JPEG, WEBP, BMP)</h1>
+      <p className="mb-8 text-center max-w-xl text-gray-700 dark:text-gray-300">
+        Convert your images between popular formats directly in your browser. Fast, private, and free. No upload required!
+      </p>
+      <ImageConverter />
+      {/* Place your real AdSense client and slot values below */}
+      <div className="my-8 w-full flex justify-center">
+        <AdSense client="ca-pub-xxxxxxxxxxxxxxxx" slot="1234567890" />
       </div>
-    </>
+      <footer className="mt-12 text-xs text-gray-500 text-center">
+        &copy; {new Date().getFullYear()} Image Converter. Built with Next.js.
+      </footer>
+    </div>
   );
 }
