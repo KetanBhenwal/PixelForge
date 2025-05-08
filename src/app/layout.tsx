@@ -110,7 +110,7 @@ export default function RootLayout({
           {/* Footer */}
           <footer className="bg-gray-800 text-white p-4 mt-8">
             <div className="flex justify-between items-center max-w-4xl mx-auto">
-              <p className="text-sm">&copy; 2025 Image Converter. All rights reserved.</p>
+              <p className="text-sm">&copy; 2025 <span className="font-semibold">PixelForge</span>. All rights reserved.</p>
               <ul className="flex gap-4 text-sm">
                 <li><Link href="/privacy-policy" className="hover:underline">Privacy Policy</Link></li>
                 <li><Link href="/terms-of-service" className="hover:underline">Terms of Service</Link></li>
