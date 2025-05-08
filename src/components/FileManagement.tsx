@@ -152,7 +152,7 @@ const FileManagement: React.FC = () => {
       className="flex flex-col gap-8 items-center w-full max-w-2xl mx-auto p-8 bg-gradient-to-br from-gray-50 via-blue-50 to-purple-100 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 rounded-2xl shadow-2xl border border-blue-200 dark:border-gray-700"
       aria-labelledby="file-mgmt-title"
     >
-      <h1 id="file-mgmt-title" className="text-3xl font-extrabold text-gray-900 dark:text-white mb-4 tracking-tight text-center">File Management Tools</h1>
+      <h2 id="file-mgmt-title" className="text-2xl font-semibold text-gray-800 dark:text-gray-200 mb-4 text-center">Available Tools</h2>
       <div className="flex flex-col md:flex-row gap-8 w-full">
         <div className="md:w-1/2 w-full flex flex-col justify-center">
           <div className="mb-3 text-xl font-semibold text-gray-800 dark:text-gray-100">What would you like to do?</div>

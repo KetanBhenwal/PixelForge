@@ -37,6 +37,7 @@ export default function ConvertDocuments() {
       <p className="mb-8 text-center max-w-xl text-gray-700 dark:text-gray-300">
         Upload your document and convert it to the desired format (Word to Excel or vice versa).
       </p>
+      <h2 className="text-2xl font-semibold mb-6 text-center text-gray-800 dark:text-gray-200">Quick and Easy Document Format Conversion</h2>
       <input type="file" accept=".doc,.docx,.xls,.xlsx" onChange={handleFileChange} className="mb-4" />
       <select value={outputFormat} onChange={handleFormatChange} className="mb-4 p-2 border rounded">
         <option value="word">Convert to Word</option>

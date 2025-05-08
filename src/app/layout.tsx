@@ -17,7 +17,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Image Converter | PNG to JPEG, WEBP, BMP | Free Online Tool",
-  description: "Convert images between PNG, JPEG, WEBP, and BMP formats instantly in your browser. Fast, private, and free. No upload required!",
+  description: "Convert images between PNG, JPEG, WEBP, and BMP formats instantly in your browser. Fast, private, and free. No upload required!", // Primary description
   keywords: [
     "image converter",
     "png to jpeg",
@@ -26,20 +26,40 @@ export const metadata: Metadata = {
     "bmp converter",
     "online image converter",
     "free image converter",
-    "browser image converter"
+    "browser image converter",
+    "file management", 
+    "merge PDF", 
+    "split PDF", 
+    "compress files", 
+    "convert files", 
+    "secure files",
+    "PDF tools",
+    "resizing"
   ],
   openGraph: {
-    title: "Image Converter | PNG to JPEG, WEBP, BMP | Free Online Tool",
-    description: "Convert images between PNG, JPEG, WEBP, and BMP formats instantly in your browser. Fast, private, and free. No upload required!",
-    url: "https://yourdomain.com/",
-    siteName: "Image Converter",
-    type: "website"
+    title: "Image Converter & File Management | PixelForge", // Consolidated title
+    description: "All-in-one file and image management: convert, compress, merge, split, and secure your files. Fast, free, and user-friendly!", // Consolidated description
+    url: "https://yourdomain.com/", // Replace with your actual domain
+    siteName: "PixelForge",
+    images: [
+      {
+        url: "https://yourdomain.com/app-icon.svg", // Replace with your actual domain and a suitable OG image
+        width: 800,
+        height: 600,
+        alt: "PixelForge Logo",
+      },
+    ],
+    type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Image Converter | PNG to JPEG, WEBP, BMP | Free Online Tool",
-    description: "Convert images between PNG, JPEG, WEBP, and BMP formats instantly in your browser. Fast, private, and free. No upload required!"
-  }
+    title: "Image Converter & File Management | PixelForge",
+    description: "All-in-one file and image management: convert, compress, merge, split, and secure your files. Fast, free, and user-friendly!",
+    images: ["https://yourdomain.com/app-icon.svg"], // Replace with your actual domain and a suitable Twitter image
+  },
+  alternates: {
+    canonical: "https://yourdomain.com/", // Replace with your actual domain
+  },
 };
 
 export default function RootLayout({
@@ -50,20 +70,17 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        {/* Google AdSense script */}
+        {/* Google AdSense script - client ID should be managed via environment variables or a config file ideally */}
         <script
           async
-          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3851492837698079"
+          src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3851492837698079`}
           crossOrigin="anonymous"
         ></script>
-        <meta name="description" content="All-in-one file management tool: merge, split, compress, convert, and secure your files with ease. Fast, free, and user-friendly!" />
-        <meta name="keywords" content="file management, merge PDF, split PDF, compress files, convert files, secure files, online tools" />
-        <link rel="canonical" href="https://yourdomain.com/" />
-        <meta name="description" content="A feature-rich file and image management application with tools for conversion, compression, and more." />
-        <meta name="keywords" content="file management, image conversion, PDF tools, compression, resizing" />
-        <meta property="og:title" content="File and Image Management Tools" />
-        <meta property="og:description" content="Convert, compress, and manage your files and images with ease." />
-        <link rel="icon" href="app-icon.svg" type="image/svg+xml" />
+        {/* Removed direct meta description and keywords from here, they are handled by the metadata object */}
+        {/* <link rel="canonical" href="https://yourdomain.com/" /> -> Handled by metadata.alternates.canonical */}
+        {/* <meta property="og:title" content="File and Image Management Tools" /> -> Handled by metadata.openGraph */}
+        {/* <meta property="og:description" content="Convert, compress, and manage your files and images with ease." /> -> Handled by metadata.openGraph */}
+        <link rel="icon" href="/app-icon.svg" type="image/svg+xml" />
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
@@ -79,25 +96,25 @@ export default function RootLayout({
               <ul className="flex gap-8">
               <li>
                 <Link href="/" className="hover:underline flex items-center gap-2">
-                  <Image src="/home.svg" alt="Home" width={20} height={20} />
+                  <Image src="/home.svg" alt="Home" width={20} height={20} loading="lazy" />
                   Home
                 </Link>
               </li>
               <li>
                 <Link href="/convert-documents" className="hover:underline flex items-center gap-2">
-                  <Image src="/document.svg" alt="Convert Documents" width={20} height={20} />
+                  <Image src="/document.svg" alt="Convert Documents" width={20} height={20} loading="lazy" />
                   Convert Documents
                 </Link>
               </li>
               <li>
                 <Link href="/compress-files" className="hover:underline flex items-center gap-2">
-                  <Image src="/compress.svg" alt="Compress Files" width={20} height={20} />
+                  <Image src="/compress.svg" alt="Compress Files" width={20} height={20} loading="lazy" />
                   Compress Files
                 </Link>
               </li>
               <li>
                 <Link href="/file-management" className="hover:underline flex items-center gap-2">
-                  <Image src="/manage.svg" alt="File Management" width={20} height={20} />
+                  <Image src="/manage.svg" alt="File Management" width={20} height={20} loading="lazy" />
                   File Management
                 </Link>
               </li>

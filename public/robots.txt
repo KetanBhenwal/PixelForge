@@ -1,0 +1,11 @@
+User-agent: *
+Allow: /
+
+# Block access to API endpoints
+Disallow: /api/
+
+# Allow search engines to access sitemap
+Sitemap: https://pixel-forge-nine.vercel.app/sitemap.xml
+
+# Crawl-delay recommendation
+Crawl-delay: 10

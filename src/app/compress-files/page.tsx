@@ -32,6 +32,7 @@ export default function CompressFiles() {
       <p className="mb-8 text-center max-w-xl text-gray-700 dark:text-gray-300">
         Upload your file to compress it and save space.
       </p>
+      <h2 className="text-2xl font-semibold mb-6 text-center text-gray-800 dark:text-gray-200">Reduce File Size Without Losing Quality</h2>
       <input type="file" onChange={handleFileChange} className="mb-4" />
       <button
         onClick={handleCompress}
