@@ -27,7 +27,7 @@ export default function CompressFiles() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center p-4 bg-gray-50 dark:bg-gray-900">
+    <div className="flex flex-col gap-8 items-center w-full max-w-2xl mx-auto p-8 bg-gradient-to-br from-gray-50 via-blue-50 to-purple-100 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 rounded-2xl shadow-2xl border border-blue-200 dark:border-gray-700">
       <h1 className="text-3xl font-bold mb-6 text-center">Compress Huge Files</h1>
       <p className="mb-8 text-center max-w-xl text-gray-700 dark:text-gray-300">
         Upload your file to compress it and save space.
