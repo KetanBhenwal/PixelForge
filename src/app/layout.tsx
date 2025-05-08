@@ -63,7 +63,7 @@ export default function RootLayout({
         <meta name="keywords" content="file management, image conversion, PDF tools, compression, resizing" />
         <meta property="og:title" content="File and Image Management Tools" />
         <meta property="og:description" content="Convert, compress, and manage your files and images with ease." />
-        <meta property="og:image" content="/file.svg" />
+        <link rel="icon" href="app-icon.svg" type="image/svg+xml" />
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
@@ -71,7 +71,12 @@ export default function RootLayout({
         <div className="min-h-screen flex flex-col justify-between">
           {/* Navigation Bar */}
           <nav className="bg-gradient-to-r from-blue-500 to-purple-600 text-white p-4 shadow-lg">
-            <ul className="flex justify-center gap-8">
+            <div className="flex flex-row items-center justify-around mb-2 w-full">
+              <div className="flex items-center gap-3 mb-2">
+                <Image src="/app-icon.svg" alt="App Logo" width={32} height={32} priority className="rounded" />
+                <span className="text-xl font-bold tracking-tight">PixelForge</span>
+              </div>
+              <ul className="flex gap-8">
               <li>
                 <Link href="/" className="hover:underline flex items-center gap-2">
                   <Image src="home.svg" alt="Home" width={20} height={20} />
@@ -97,6 +102,7 @@ export default function RootLayout({
                 </Link>
               </li>
             </ul>
+            </div>
           </nav>
 
         {/* Accessibility skip link */}
