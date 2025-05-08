@@ -79,25 +79,25 @@ export default function RootLayout({
               <ul className="flex gap-8">
               <li>
                 <Link href="/" className="hover:underline flex items-center gap-2">
-                  <Image src="home.svg" alt="Home" width={20} height={20} />
+                  <Image src="/home.svg" alt="Home" width={20} height={20} />
                   Home
                 </Link>
               </li>
               <li>
                 <Link href="/convert-documents" className="hover:underline flex items-center gap-2">
-                  <Image src="document.svg" alt="Convert Documents" width={20} height={20} />
+                  <Image src="/document.svg" alt="Convert Documents" width={20} height={20} />
                   Convert Documents
                 </Link>
               </li>
               <li>
                 <Link href="/compress-files" className="hover:underline flex items-center gap-2">
-                  <Image src="compress.svg" alt="Compress Files" width={20} height={20} />
+                  <Image src="/compress.svg" alt="Compress Files" width={20} height={20} />
                   Compress Files
                 </Link>
               </li>
               <li>
                 <Link href="/file-management" className="hover:underline flex items-center gap-2">
-                  <Image src="manage.svg" alt="File Management" width={20} height={20} />
+                  <Image src="/manage.svg" alt="File Management" width={20} height={20} />
                   File Management
                 </Link>
               </li>
