@@ -5,7 +5,7 @@ export default function PrivacyPolicy() {
     <div className="max-w-3xl mx-auto py-12 px-4">
       <h1 className="text-3xl font-bold mb-6">Privacy Policy</h1>
       <p className="mb-4">Last updated: May 8, 2025</p>
-      <p className="mb-4">This Privacy Policy describes how PixelForge ("we", "us", or "our") collects, uses, and protects your information when you use our image and file conversion tools.</p>
+      <p className="mb-4">This Privacy Policy describes how PixelForge (&quot;we&quot;, &quot;us&quot;, or &quot;our&quot;) collects, uses, and protects your information when you use our image and file conversion tools.</p>
       <h2 className="text-xl font-semibold mt-8 mb-2">Information We Collect</h2>
       <ul className="list-disc ml-6 mb-4">
         <li>We do <strong>not</strong> store or upload your files. All processing is done in your browser.</li>
