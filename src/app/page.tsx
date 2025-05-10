@@ -16,9 +16,6 @@ export default function Home() {
       <div className="my-8 w-full flex justify-center">
         <AdSense client="ca-pub-xxxxxxxxxxxxxxxx" slot="1234567890" />
       </div>
-      <footer className="mt-12 text-xs text-gray-500 text-center">
-        &copy; {new Date().getFullYear()} Image Converter. Built with Next.js.
-      </footer>
     </div>
   );
 }
