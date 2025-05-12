@@ -10,8 +10,30 @@ export default function ConvertDocuments() {
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files[0]) {
-      setFile(e.target.files[0]);
+      const selectedFile = e.target.files[0];
+      setFile(selectedFile);
       setConvertedFileUrl("");
+
+      // Mapping of file extensions to conversion types
+      const extensionToFormatMap: Record<string, string> = {
+        doc: "excel",
+        docx: "excel",
+        xls: "word",
+        xlsx: "word",
+        csv: "excel", // Add support for CSV to XLSX conversion
+      };
+
+      // Determine the file extension
+      const ext = selectedFile.name.split(".").pop()?.toLowerCase();
+
+      // Check if the extension is supported and set the output format
+      if (ext && extensionToFormatMap[ext]) {
+        setOutputFormat(extensionToFormatMap[ext]);
+      } else {
+        alert("Unsupported file type. Please upload a .doc, .docx, .xls, .xlsx, or .csv file.");
+        setFile(null);
+        return;
+      }
     }
   };
 
@@ -20,12 +42,43 @@ export default function ConvertDocuments() {
   };
 
   const handleConvert = async () => {
-    if (!file) return;
+    if (!file) {
+      alert("No file selected. Please upload a file to convert.");
+      return;
+    }
+
     setLoading(true);
 
     // Simulate file conversion process
     setTimeout(() => {
-      const fakeUrl = URL.createObjectURL(new Blob(["Converted File"], { type: "application/octet-stream" }));
+      const ext = file.name.split(".").pop()?.toLowerCase();
+      let convertedContent = "";
+      let convertedExtension = "";
+
+      if (ext === "doc" || ext === "docx") {
+        // Simulate Word to Excel conversion
+        convertedContent = "Simulated Excel content for " + file.name;
+        convertedExtension = "xlsx";
+      } else if (ext === "xls" || ext === "xlsx") {
+        // Simulate Excel to Word conversion
+        convertedContent = "Simulated Word content for " + file.name;
+        convertedExtension = "docx";
+      } else if (ext === "csv") {
+        // Simulate CSV to Excel conversion
+        convertedContent = "Simulated Excel content for CSV file: " + file.name;
+        convertedExtension = "xlsx";
+      } else {
+        alert("Unsupported file type. Conversion failed.");
+        setLoading(false);
+        return;
+      }
+
+      // Create a Blob with the converted content
+      const blob = new Blob([convertedContent], { type: "application/octet-stream" });
+      const fakeUrl = URL.createObjectURL(blob);
+      setConvertedFileUrl(fakeUrl);
+
+      // Update the download link with the correct file extension
       setConvertedFileUrl(fakeUrl);
       setLoading(false);
     }, 2000);
@@ -38,10 +91,41 @@ export default function ConvertDocuments() {
         Upload your document and convert it to the desired format (Word to Excel or vice versa).
       </p>
       <h2 className="text-2xl font-semibold mb-6 text-center text-gray-800 dark:text-gray-200">Quick and Easy Document Format Conversion</h2>
-      <input type="file" accept=".doc,.docx,.xls,.xlsx" onChange={handleFileChange} className="mb-4" />
-      <select value={outputFormat} onChange={handleFormatChange} className="mb-4 p-2 border rounded">
+      {/* Modern file upload area */}
+      <div className="w-full flex flex-col items-center mb-4">
+        <label
+          htmlFor="file-upload"
+          className={`w-full flex flex-col items-center justify-center px-6 py-8 border-2 border-dashed rounded-xl cursor-pointer transition bg-gray-100 dark:bg-gray-700 hover:bg-blue-50 dark:hover:bg-gray-600 border-blue-300 dark:border-blue-500 ${file ? 'border-green-400 bg-green-50 dark:bg-green-900' : ''}`}
+        >
+          <svg className="w-10 h-10 text-blue-500 dark:text-blue-300" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path strokeLinecap="round" strokeLinejoin="round" d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2M7 10l5 5m0 0l5-5m-5 5V4"></path>
+          </svg>
+          <span className="mt-3 text-lg leading-normal font-semibold text-blue-700 dark:text-blue-200">
+            {file ? file.name : 'Drag & drop or click to select a document'}
+          </span>
+          <input
+            id="file-upload"
+            type="file"
+            accept=".doc,.docx,.xls,.xlsx,.csv"
+            onChange={handleFileChange}
+            className="hidden"
+          />
+        </label>
+        {file && (
+          <button
+            type="button"
+            onClick={() => setFile(null)}
+            className="mt-2 text-xs text-red-600 dark:text-red-400 hover:underline focus:outline-none"
+            aria-label="Remove selected file"
+          >
+            Remove file
+          </button>
+        )}
+      </div>
+      <select value={outputFormat} onChange={handleFormatChange} className="mb-4 p-3 border rounded bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-gray-100 w-full max-w-xs">
         <option value="word">Convert to Word</option>
         <option value="excel">Convert to Excel</option>
+        <option value="csv">Convert to CSV</option>
       </select>
       <button
         onClick={handleConvert}
