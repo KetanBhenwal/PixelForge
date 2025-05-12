@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import Link from "next/link";
 
 export default function ConvertDocuments() {
   const [file, setFile] = useState<File | null>(null);
@@ -90,6 +91,23 @@ export default function ConvertDocuments() {
       <p className="mb-8 text-center max-w-xl text-gray-700 dark:text-gray-300">
         Upload your document and convert it to the desired format (Word to Excel or vice versa).
       </p>
+      <div className="flex flex-wrap justify-center gap-4 mb-8">
+        <Link href="/compress-files" className="text-blue-600 hover:underline">
+          Compress Files
+        </Link>
+        <Link href="/file-management" className="text-blue-600 hover:underline">
+          File Management Tools
+        </Link>
+        <Link href="/privacy-policy" className="text-blue-600 hover:underline">
+          Privacy Policy
+        </Link>
+        <Link href="/terms-of-service" className="text-blue-600 hover:underline">
+          Terms of Service
+        </Link>
+        <Link href="/contact" className="text-blue-600 hover:underline">
+          Contact Us
+        </Link>
+      </div>
       <h2 className="text-2xl font-semibold mb-6 text-center text-gray-800 dark:text-gray-200">Quick and Easy Document Format Conversion</h2>
       {/* Modern file upload area */}
       <div className="w-full flex flex-col items-center mb-4">

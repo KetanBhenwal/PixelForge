@@ -94,31 +94,49 @@ export default function RootLayout({
                 <span className="text-xl font-bold tracking-tight">PixelForge</span>
               </div>
               <ul className="flex gap-8">
-              <li>
-                <Link href="/" className="hover:underline flex items-center gap-2">
-                  <Image src="/home.svg" alt="Home" width={20} height={20} loading="lazy" />
-                  Home
-                </Link>
-              </li>
-              <li>
-                <Link href="/convert-documents" className="hover:underline flex items-center gap-2">
-                  <Image src="/document.svg" alt="Convert Documents" width={20} height={20} loading="lazy" />
-                  Convert Documents
-                </Link>
-              </li>
-              <li>
-                <Link href="/compress-files" className="hover:underline flex items-center gap-2">
-                  <Image src="/compress.svg" alt="Compress Files" width={20} height={20} loading="lazy" />
-                  Compress Files
-                </Link>
-              </li>
-              <li>
-                <Link href="/file-management" className="hover:underline flex items-center gap-2">
-                  <Image src="/manage.svg" alt="File Management" width={20} height={20} loading="lazy" />
-                  File Management
-                </Link>
-              </li>
-            </ul>
+                <li>
+                  <Link href="/" className="hover:underline flex items-center gap-2">
+                    <Image src="/home.svg" alt="Home" width={20} height={20} loading="lazy" />
+                    Home
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/convert-documents" className="hover:underline flex items-center gap-2">
+                    <Image src="/document.svg" alt="Convert Documents" width={20} height={20} loading="lazy" />
+                    Convert Documents
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/compress-files" className="hover:underline flex items-center gap-2">
+                    <Image src="/compress.svg" alt="Compress Files" width={20} height={20} loading="lazy" />
+                    Compress Files
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/file-management" className="hover:underline flex items-center gap-2">
+                    <Image src="/manage.svg" alt="File Management" width={20} height={20} loading="lazy" />
+                    File Management
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/privacy-policy" className="hover:underline flex items-center gap-2">
+                    <Image src="/globe.svg" alt="Privacy Policy" width={20} height={20} loading="lazy" />
+                    Privacy Policy
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/terms-of-service" className="hover:underline flex items-center gap-2">
+                    <Image src="/file.svg" alt="Terms of Service" width={20} height={20} loading="lazy" />
+                    Terms of Service
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/contact" className="hover:underline flex items-center gap-2">
+                    <Image src="/window.svg" alt="Contact" width={20} height={20} loading="lazy" />
+                    Contact
+                  </Link>
+                </li>
+              </ul>
             </div>
           </nav>
 

@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import Link from "next/link";
 
 export default function CompressFiles() {
   const [file, setFile] = useState<File | null>(null);
@@ -32,6 +33,23 @@ export default function CompressFiles() {
       <p className="mb-8 text-center max-w-xl text-gray-700 dark:text-gray-300">
         Upload your file to compress it and save space.
       </p>
+      <div className="flex flex-wrap justify-center gap-4 mb-8">
+        <Link href="/convert-documents" className="text-blue-600 hover:underline">
+          Convert Documents
+        </Link>
+        <Link href="/file-management" className="text-blue-600 hover:underline">
+          File Management Tools
+        </Link>
+        <Link href="/privacy-policy" className="text-blue-600 hover:underline">
+          Privacy Policy
+        </Link>
+        <Link href="/terms-of-service" className="text-blue-600 hover:underline">
+          Terms of Service
+        </Link>
+        <Link href="/contact" className="text-blue-600 hover:underline">
+          Contact Us
+        </Link>
+      </div>
       <h2 className="text-2xl font-semibold mb-6 text-center text-gray-800 dark:text-gray-200">Reduce File Size Without Losing Quality</h2>
       <input type="file" onChange={handleFileChange} className="mb-4" />
       <button
