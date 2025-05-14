@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Script from "next/script";
-import { SpeedInsights } from "@vercel/speed-insights/next"
 
 import Link from "next/link";
 import Image from "next/image";
@@ -239,8 +238,6 @@ export default function RootLayout({
             }
           `}
         </script>
-        <SpeedInsights />
-
       </body>
     </html>
   );
