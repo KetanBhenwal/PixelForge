@@ -54,20 +54,16 @@ export default function ConvertDocuments() {
     setTimeout(() => {
       const ext = file.name.split(".").pop()?.toLowerCase();
       let convertedContent = "";
-      let convertedExtension = "";
 
       if (ext === "doc" || ext === "docx") {
         // Simulate Word to Excel conversion
         convertedContent = "Simulated Excel content for " + file.name;
-        convertedExtension = "xlsx";
       } else if (ext === "xls" || ext === "xlsx") {
         // Simulate Excel to Word conversion
         convertedContent = "Simulated Word content for " + file.name;
-        convertedExtension = "docx";
       } else if (ext === "csv") {
         // Simulate CSV to Excel conversion
         convertedContent = "Simulated Excel content for CSV file: " + file.name;
-        convertedExtension = "xlsx";
       } else {
         alert("Unsupported file type. Conversion failed.");
         setLoading(false);
