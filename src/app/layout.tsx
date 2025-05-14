@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import Script from "next/script";
 
 import Link from "next/link";
 import Image from "next/image";
@@ -27,11 +28,11 @@ export const metadata: Metadata = {
     "online image converter",
     "free image converter",
     "browser image converter",
-    "file management", 
-    "merge PDF", 
-    "split PDF", 
-    "compress files", 
-    "convert files", 
+    "file management",
+    "merge PDF",
+    "split PDF",
+    "compress files",
+    "convert files",
     "secure files",
     "PDF tools",
     "resizing"
@@ -81,6 +82,19 @@ export default function RootLayout({
         {/* <meta property="og:title" content="File and Image Management Tools" /> -> Handled by metadata.openGraph */}
         {/* <meta property="og:description" content="Convert, compress, and manage your files and images with ease." /> -> Handled by metadata.openGraph */}
         <link rel="icon" href="/app-icon.svg" type="image/svg+xml" />
+        <Script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=G-5RD0N00K9Z"
+        ></Script>
+        <Script id="google-analytics">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'G-5RD0N00K9Z');
+          `}
+        </Script>
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
@@ -90,25 +104,61 @@ export default function RootLayout({
           <nav className="bg-gradient-to-r from-blue-500 to-purple-600 text-white p-4 shadow-lg">
             <div className="flex flex-row items-center justify-around mb-2 w-full">
               <div className="flex items-center gap-3 mb-2">
-                <Image src="/app-icon.svg" alt="App Logo" width={32} height={32} priority className="rounded" />
-                <span className="text-xl font-bold tracking-tight">PixelForge</span>
+                <Image
+                  src="/app-icon.svg"
+                  alt="App Logo"
+                  width={32}
+                  height={32}
+                  priority
+                  className="rounded"
+                />
+                <span className="text-xl font-bold tracking-tight">
+                  PixelForge
+                </span>
               </div>
               <ul className="flex gap-8">
                 <li>
-                  <Link href="/" className="hover:underline flex items-center gap-2">
-                    <Image src="/home.svg" alt="Home" width={20} height={20} loading="lazy" />
+                  <Link
+                    href="/"
+                    className="hover:underline flex items-center gap-2"
+                  >
+                    <Image
+                      src="/home.svg"
+                      alt="Home"
+                      width={20}
+                      height={20}
+                      loading="lazy"
+                    />
                     Home
                   </Link>
                 </li>
                 <li>
-                  <Link href="/convert-documents" className="hover:underline flex items-center gap-2">
-                    <Image src="/document.svg" alt="Convert Documents" width={20} height={20} loading="lazy" />
+                  <Link
+                    href="/convert-documents"
+                    className="hover:underline flex items-center gap-2"
+                  >
+                    <Image
+                      src="/document.svg"
+                      alt="Convert Documents"
+                      width={20}
+                      height={20}
+                      loading="lazy"
+                    />
                     Convert Documents
                   </Link>
                 </li>
                 <li>
-                  <Link href="/compress-files" className="hover:underline flex items-center gap-2">
-                    <Image src="/compress.svg" alt="Compress Files" width={20} height={20} loading="lazy" />
+                  <Link
+                    href="/compress-files"
+                    className="hover:underline flex items-center gap-2"
+                  >
+                    <Image
+                      src="/compress.svg"
+                      alt="Compress Files"
+                      width={20}
+                      height={20}
+                      loading="lazy"
+                    />
                     Compress Files
                   </Link>
                 </li>
@@ -118,44 +168,58 @@ export default function RootLayout({
                     File Management
                   </Link>
                 </li>
-                <li>
-                  <Link href="/privacy-policy" className="hover:underline flex items-center gap-2">
-                    <Image src="/globe.svg" alt="Privacy Policy" width={20} height={20} loading="lazy" />
-                    Privacy Policy
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/terms-of-service" className="hover:underline flex items-center gap-2">
-                    <Image src="/file.svg" alt="Terms of Service" width={20} height={20} loading="lazy" />
-                    Terms of Service
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/contact" className="hover:underline flex items-center gap-2">
-                    <Image src="/window.svg" alt="Contact" width={20} height={20} loading="lazy" />
-                    Contact
-                  </Link>
-                </li>
+                
               </ul>
             </div>
           </nav>
 
-        {/* Accessibility skip link */}
-        <a href="#main-content" className="sr-only focus:not-sr-only bg-blue-700 text-white px-4 py-2 rounded absolute top-2 left-2 z-50">Skip to main content</a>
+          {/* Accessibility skip link */}
+          <a
+            href="#main-content"
+            className="sr-only focus:not-sr-only bg-blue-700 text-white px-4 py-2 rounded absolute top-2 left-2 z-50"
+          >
+            Skip to main content
+          </a>
 
           {/* Main Content */}
-          <main id="main-content" tabIndex={-1} className="flex-grow container mx-auto px-4 py-8 outline-none">
+          <main
+            id="main-content"
+            tabIndex={-1}
+            className="flex-grow container mx-auto px-4 py-8 outline-none"
+          >
             {children}
           </main>
 
           {/* Footer */}
           <footer className="bg-gray-800 text-white p-4 mt-8">
             <div className="flex justify-between items-center max-w-4xl mx-auto">
-              <p className="text-sm">&copy; 2025 <span className="font-semibold">PixelForge</span>. All rights reserved.</p>
+              <p className="text-sm">
+                &copy; 2025{" "}
+                <span className="font-semibold">PixelForge</span>. All rights
+                reserved.
+              </p>
               <ul className="flex gap-4 text-sm">
-                <li><Link href="/privacy-policy" className="hover:underline">Privacy Policy</Link></li>
-                <li><Link href="/terms-of-service" className="hover:underline">Terms of Service</Link></li>
-                <li><Link href="/contact" className="hover:underline">Contact</Link></li>
+                <li>
+                  <Link
+                    href="/privacy-policy"
+                    className="hover:underline"
+                  >
+                    Privacy Policy
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/terms-of-service"
+                    className="hover:underline"
+                  >
+                    Terms of Service
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/contact" className="hover:underline">
+                    Contact
+                  </Link>
+                </li>
               </ul>
             </div>
           </footer>
