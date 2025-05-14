@@ -168,7 +168,7 @@ export default function RootLayout({
                     File Management
                   </Link>
                 </li>
-                
+
               </ul>
             </div>
           </nav>
@@ -237,6 +237,17 @@ export default function RootLayout({
               document.documentElement.classList.remove('dark');
             }
           `}
+        </script>
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-5RD0N00K9Z"></script>
+        <script>
+          {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+
+          gtag('config', 'G-5RD0N00K9Z');
+          `}
+
         </script>
       </body>
     </html>
