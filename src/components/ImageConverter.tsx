@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Image from "next/image";
 
 // Remove unused Props interface to fix lint error
 
@@ -173,7 +174,7 @@ const ImageConverter: React.FC = () => {
       </button>
       {outputUrl && (
         <div className="flex flex-col items-center gap-3 mt-6">
-          <img src={outputUrl} alt="Converted" className="max-w-full max-h-64 border rounded shadow-lg" />
+          <Image src={outputUrl} alt="Converted" className="max-w-full max-h-64 border rounded shadow-lg" width={500} height={500} />
           <a href={outputUrl} download={`converted.${outputType.split("/")[1]}`} className="text-blue-700 dark:text-blue-300 underline font-medium">
             Download
           </a>
