@@ -1,8 +1,8 @@
 "use client";
 
 import React, { useState } from "react";
-import { zipSync, strToU8 } from "fflate";
-import Link from "next/link";
+import { zipSync } from "fflate";
+
 
 export default function CompressFiles() {
   const [file, setFile] = useState<File | null>(null);
