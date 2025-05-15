@@ -15,4 +15,29 @@
     <lastmod>2025-05-03</lastmod>
     <priority>0.8</priority>
   </url>
+  <url>
+    <loc>https://pixel-forge-nine.vercel.app/convert-images</loc>
+    <lastmod>2025-05-03</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://pixel-forge-nine.vercel.app/about</loc>
+    <lastmod>2025-05-03</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://pixel-forge-nine.vercel.app/privacy-policy</loc>
+    <lastmod>2025-05-03</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://pixel-forge-nine.vercel.app/terms-of-service</loc>
+    <lastmod>2025-05-03</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://pixel-forge-nine.vercel.app/contact</loc>
+    <lastmod>2025-05-03</lastmod>
+    <priority>0.5</priority>
+  </url>
 </urlset>
