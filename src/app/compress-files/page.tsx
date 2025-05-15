@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import { zipSync, strToU8 } from "fflate";
 import Link from "next/link";
 
 export default function CompressFiles() {
@@ -19,12 +20,18 @@ export default function CompressFiles() {
     if (!file) return;
     setLoading(true);
 
-    // Simulate file compression process
-    setTimeout(() => {
-      const fakeUrl = URL.createObjectURL(new Blob(["Compressed File"], { type: "application/octet-stream" }));
-      setCompressedFileUrl(fakeUrl);
+    // Read the file as ArrayBuffer
+    const reader = new FileReader();
+    reader.onload = function (e) {
+      const fileData = new Uint8Array(e.target?.result as ArrayBuffer);
+      // Create a zip archive with the file
+      const zipped = zipSync({ [file.name]: fileData });
+      const zipBlob = new Blob([zipped], { type: "application/zip" });
+      const zipUrl = URL.createObjectURL(zipBlob);
+      setCompressedFileUrl(zipUrl);
       setLoading(false);
-    }, 2000);
+    };
+    reader.readAsArrayBuffer(file);
   };
 
   return (
@@ -33,25 +40,53 @@ export default function CompressFiles() {
       <p className="mb-8 text-center max-w-xl text-gray-700 dark:text-gray-300">
         Upload your file to compress it and save space.
       </p>
-      <div className="flex flex-wrap justify-center gap-4 mb-8">
-        <Link href="/convert-documents" className="text-blue-600 hover:underline">
-          Convert Documents
-        </Link>
-        <Link href="/file-management" className="text-blue-600 hover:underline">
-          File Management Tools
-        </Link>
-        <Link href="/privacy-policy" className="text-blue-600 hover:underline">
-          Privacy Policy
-        </Link>
-        <Link href="/terms-of-service" className="text-blue-600 hover:underline">
-          Terms of Service
-        </Link>
-        <Link href="/contact" className="text-blue-600 hover:underline">
-          Contact Us
-        </Link>
-      </div>
       <h2 className="text-2xl font-semibold mb-6 text-center text-gray-800 dark:text-gray-200">Reduce File Size Without Losing Quality</h2>
-      <input type="file" onChange={handleFileChange} className="mb-4" />
+      {/* Modern, accessible file upload area */}
+      <div className="w-full flex flex-col items-center mb-4">
+        <label
+          htmlFor="file-upload"
+          tabIndex={0}
+          className={`w-full flex flex-col items-center px-6 py-8 bg-gray-100 dark:bg-gray-800 text-blue-700 dark:text-blue-200 rounded-xl shadow-md border-2 border-dashed border-blue-300 dark:border-blue-500 cursor-pointer focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-200 relative group ${file ? 'border-green-500 bg-green-50 dark:bg-green-900 ring-2 ring-green-400' : 'hover:bg-blue-50 dark:hover:bg-gray-700'}`}
+          aria-label="Upload a file to compress"
+        >
+          <span className="sr-only">Upload a file to compress</span>
+          <svg className="w-12 h-12 mb-2 text-blue-500 dark:text-blue-300 group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path strokeLinecap="round" strokeLinejoin="round" d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2M7 10l5 5m0 0l5-5m-5 5V4"></path>
+          </svg>
+          <span className="mt-2 text-base font-medium text-center">
+            {file ? (
+              <>
+                <span className="truncate max-w-xs inline-block align-middle" title={file.name}>{file.name}</span>
+                <span className="ml-2 inline-block align-middle px-2 py-0.5 text-xs rounded bg-blue-200 dark:bg-blue-700 text-blue-800 dark:text-blue-100">{file.type || 'File'}</span>
+              </>
+            ) : (
+              <>
+                <span className="font-semibold">Click or press Enter/Space to upload</span>
+                <span className="block text-xs text-gray-500 dark:text-gray-400 mt-1">Any file type accepted</span>
+              </>
+            )}
+          </span>
+          <input
+            id="file-upload"
+            type="file"
+            className="hidden"
+            onChange={handleFileChange}
+            aria-describedby="file-upload-help"
+          />
+        </label>
+        <span id="file-upload-help" className="sr-only">Any file type accepted</span>
+        {file && (
+          <button
+            type="button"
+            onClick={() => setFile(null)}
+            className="mt-2 flex items-center gap-1 text-xs text-red-600 dark:text-red-400 hover:underline focus:outline-none focus:ring-2 focus:ring-red-400 rounded px-2 py-1 transition"
+            aria-label="Remove selected file"
+          >
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24" aria-hidden="true"><path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
+            Remove
+          </button>
+        )}
+      </div>
       <button
         onClick={handleCompress}
         disabled={!file || loading}
@@ -59,9 +94,9 @@ export default function CompressFiles() {
       >
         {loading ? "Compressing..." : "Compress"}
       </button>
-      {compressedFileUrl && (
+      {compressedFileUrl && file && (
         <div className="mt-4">
-          <a href={compressedFileUrl} download="compressed-file.zip" className="text-blue-700 underline">
+          <a href={compressedFileUrl} download={`${file.name.replace(/\.[^/.]+$/, '') || 'compressed-file'}.zip`} className="text-blue-700 underline">
             Download Compressed File
           </a>
         </div>
