@@ -110,13 +110,53 @@ const ImageConverter: React.FC = () => {
 
   return (
     <div className="flex flex-col gap-8 items-center w-full max-w-2xl mx-auto p-8 bg-gradient-to-br from-gray-50 via-blue-50 to-purple-100 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 rounded-2xl shadow-2xl border border-blue-200 dark:border-gray-700">
-      <label className="w-full flex flex-col items-center px-6 py-8 bg-gray-200 dark:bg-gray-700 text-blue-600 rounded-lg shadow-md tracking-wide uppercase border border-blue-300 cursor-pointer hover:bg-blue-300 dark:hover:bg-gray-600 transition">
-        <svg className="w-10 h-10" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-          <path strokeLinecap="round" strokeLinejoin="round" d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2M7 10l5 5m0 0l5-5m-5 5V4"></path>
-        </svg>
-        <span className="mt-3 text-lg leading-normal font-semibold">{file ? file.name : "Select an image to convert"}</span>
-        <input type="file" accept="image/*" className="hidden" onChange={handleFileChange} />
-      </label>
+      {/* Modern, accessible file upload area (consistent with other pages) */}
+      <div className="w-full flex flex-col items-center mb-4">
+        <label
+          htmlFor="image-upload"
+          tabIndex={0}
+          className={`w-full flex flex-col items-center px-6 py-8 bg-gray-100 dark:bg-gray-800 text-blue-700 dark:text-blue-200 rounded-xl shadow-md border-2 border-dashed border-blue-300 dark:border-blue-500 cursor-pointer focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-200 relative group ${file ? 'border-green-500 bg-green-50 dark:bg-green-900 ring-2 ring-green-400' : 'hover:bg-blue-50 dark:hover:bg-gray-700'}`}
+          aria-label="Upload an image file"
+        >
+          <span className="sr-only">Upload an image file</span>
+          <svg className="w-12 h-12 mb-2 text-blue-500 dark:text-blue-300 group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path strokeLinecap="round" strokeLinejoin="round" d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2M7 10l5 5m0 0l5-5m-5 5V4"></path>
+          </svg>
+          <span className="mt-2 text-base font-medium text-center">
+            {file ? (
+              <>
+                <span className="truncate max-w-xs inline-block align-middle" title={file.name}>{file.name}</span>
+                <span className="ml-2 inline-block align-middle px-2 py-0.5 text-xs rounded bg-blue-200 dark:bg-blue-700 text-blue-800 dark:text-blue-100">{file.type || 'Image'}</span>
+              </>
+            ) : (
+              <>
+                <span className="font-semibold">Click or press Enter/Space to upload</span>
+                <span className="block text-xs text-gray-500 dark:text-gray-400 mt-1">Accepted: .jpg, .jpeg, .png, .webp, .bmp, etc.</span>
+              </>
+            )}
+          </span>
+          <input
+            id="image-upload"
+            type="file"
+            accept="image/*"
+            className="hidden"
+            onChange={handleFileChange}
+            aria-describedby="image-upload-help"
+          />
+        </label>
+        <span id="image-upload-help" className="sr-only">Accepted file types: .jpg, .jpeg, .png, .webp, .bmp, etc.</span>
+        {file && (
+          <button
+            type="button"
+            onClick={() => setFile(null)}
+            className="mt-2 flex items-center gap-1 text-xs text-red-600 dark:text-red-400 hover:underline focus:outline-none focus:ring-2 focus:ring-red-400 rounded px-2 py-1 transition"
+            aria-label="Remove selected file"
+          >
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24" aria-hidden="true"><path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
+            Remove
+          </button>
+        )}
+      </div>
       <div className="flex w-full gap-4 mt-4">
         <select value={outputType} onChange={handleTypeChange} className="border rounded p-3 flex-1 bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-gray-100">
           <option value="image/jpeg">JPEG</option>
